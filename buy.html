@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buy — Market Bridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="buy-page">
+<header>
+<nav>
+<h2>Market Bridge</h2>
+<div>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="market.html">Market</a>
+<a href="feedback.html">Feedback</a>
+<a href="contact.html">Contact</a>
+</div>
+</nav>
+</header>
+
+<div class="page-subnav">
+<a href="market.html" class="subnav-back" aria-label="Back to Market">← Back to Market</a>
+<a href="sell.html" class="subnav-link">List an item</a>
+</div>
+
+<section class="buy-hero" aria-labelledby="buy-title">
+<img class="buy-hero-img" src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=1400&q=80" alt="Shopping and retail bags" width="1400" height="560" loading="eager">
+<div class="buy-hero-overlay"></div>
+<div class="buy-hero-inner">
+<h1 id="buy-title">Buy products</h1>
+<p>Sample listings in BWP plus anything you add from the Sell page—stored in your browser.</p>
+</div>
+</section>
+
+<div class="container buy-content">
+<p class="buy-hint" id="buy-empty-note" hidden>No listings yet. <a href="sell.html">Add one from Sell</a>.</p>
+<div class="grid" id="product-grid"></div>
+</div>
+
+<footer>© 2026 Market Bridge</footer>
+
+<script src="js/market-storage.js"></script>
+<script>
+(function () {
+  var grid = document.getElementById("product-grid");
+  var emptyNote = document.getElementById("buy-empty-note");
+  var cat = window.MarketBridgeCatalog;
+  if (!grid || !cat) return;
+
+  var listings = cat.getAllListings();
+  if (listings.length === 0) {
+    emptyNote.hidden = false;
+    return;
+  }
+
+  listings.forEach(function (p) {
+    var card = document.createElement("article");
+    card.className = "card product-card";
+
+    var img = document.createElement("img");
+    img.src = p.image;
+    img.alt = p.name;
+    img.loading = "lazy";
+    img.width = 800;
+    img.height = 600;
+    img.onerror = function () {
+      img.src = cat.PLACEHOLDER_IMAGE;
+    };
+
+    var body = document.createElement("div");
+    body.className = "card-content";
+
+    var h3 = document.createElement("h3");
+    h3.textContent = p.name;
+    body.appendChild(h3);
+
+    if (p.userAdded) {
+      var badge = document.createElement("span");
+      badge.className = "product-badge";
+      badge.textContent = "New listing";
+      body.appendChild(badge);
+    }
+
+    var priceEl = document.createElement("p");
+    priceEl.className = "product-price";
+    priceEl.textContent = cat.formatPriceDisplay(p.price);
+    body.appendChild(priceEl);
+
+    if (p.description) {
+      var desc = document.createElement("p");
+      desc.className = "product-desc";
+      desc.textContent = p.description;
+      body.appendChild(desc);
+    }
+
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "btn btn-block";
+    btn.textContent = "Buy";
+    body.appendChild(btn);
+    card.appendChild(img);
+    card.appendChild(body);
+    grid.appendChild(card);
+  });
+})();
+</script>
+</body>
+</html>

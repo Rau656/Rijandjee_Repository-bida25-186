@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sell — Market Bridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="sell-page">
+<header>
+<nav>
+<h2>Market Bridge</h2>
+<div>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="market.html">Market</a>
+<a href="feedback.html">Feedback</a>
+<a href="contact.html">Contact</a>
+</div>
+</nav>
+</header>
+
+<div class="page-subnav">
+<a href="market.html" class="subnav-back" aria-label="Back to Market">← Back to Market</a>
+<a href="buy.html" class="subnav-link">Browse listings</a>
+</div>
+
+<div class="sell-layout">
+<section class="sell-visual" aria-hidden="true">
+<img src="https://images.unsplash.com/photo-1556761175-b4b41a552b04?w=900&q=80" alt="" width="900" height="1100" loading="lazy">
+<div class="sell-visual-caption">List once—buyers see it right away on the Buy page.</div>
+</section>
+
+<div class="sell-main">
+<section class="sell-intro">
+<h1>List a product</h1>
+<p>Add details below. Your item is saved in this browser and appears at the top of <a href="buy.html">Buy products</a>.</p>
+</section>
+
+<form id="sell-form" class="sell-form">
+<label for="product-name">Product name <span class="req">*</span></label>
+<input id="product-name" name="name" type="text" placeholder="e.g. Desk lamp" required autocomplete="off">
+
+<label for="product-price">Price (BWP) <span class="req">*</span></label>
+<input id="product-price" name="price" type="text" inputmode="decimal" placeholder="e.g. 450 or 1250.50" required autocomplete="off">
+
+<label for="product-desc">Description</label>
+<textarea id="product-desc" name="description" rows="4" placeholder="Condition, size, pickup details…"></textarea>
+
+<label for="product-image">Image URL</label>
+<input id="product-image" name="image" type="url" placeholder="https://… (optional—uses a default photo if empty)">
+
+<p class="sell-form-hint">Price is in Botswana Pula (BWP). Tip: paste an image URL from Unsplash or any direct image link.</p>
+
+<button type="submit" class="btn btn-submit">Add to marketplace</button>
+<p id="sell-message" class="sell-message" role="status" aria-live="polite"></p>
+</form>
+</div>
+</div>
+
+<footer>© 2026 Market Bridge</footer>
+
+<script src="js/market-storage.js"></script>
+<script>
+(function () {
+  var form = document.getElementById("sell-form");
+  var msg = document.getElementById("sell-message");
+  if (!form || !window.MarketBridgeCatalog) return;
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    msg.textContent = "";
+    msg.className = "sell-message";
+
+    var name = document.getElementById("product-name").value;
+    var price = document.getElementById("product-price").value;
+    var description = document.getElementById("product-desc").value;
+    var image = document.getElementById("product-image").value;
+
+    var result = window.MarketBridgeCatalog.addUserListing({
+      name: name,
+      price: price,
+      description: description,
+      image: image,
+    });
+
+    if (!result.ok) {
+      msg.textContent = result.error || "Could not save.";
+      msg.classList.add("sell-message--error");
+      return;
+    }
+
+    msg.classList.add("sell-message--ok");
+    msg.innerHTML =
+      'Added. <a href="buy.html">View it on the Buy page</a> or list another item.';
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>

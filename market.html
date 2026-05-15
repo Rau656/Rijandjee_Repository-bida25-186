@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market — Market Bridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="market-page">
+<header>
+<nav>
+<h2>Market Bridge</h2>
+<div>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="market.html">Market</a>
+<a href="feedback.html">Feedback</a>
+<a href="contact.html">Contact</a>
+</div>
+</nav>
+</header>
+
+<section class="market-hero" aria-label="Market highlights slideshow">
+<div class="slideshow" id="marketSlideshow">
+<div class="slideshow-slides">
+<div class="slide is-active" data-index="0" style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&q=85');"></div>
+<div class="slide" data-index="1" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1920&q=85');"></div>
+<div class="slide" data-index="2" style="background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1920&q=85');"></div>
+<div class="slide" data-index="3" style="background-image: url('https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=1920&q=85');"></div>
+</div>
+<div class="slideshow-overlay"></div>
+<div class="slideshow-content">
+<p class="slideshow-eyebrow">Market Bridge</p>
+<h1 class="slideshow-title">Your marketplace hub</h1>
+<p class="slideshow-lead">Browse deals or list something new—everything starts here.</p>
+<div class="slideshow-dots" role="tablist" aria-label="Slide selection"></div>
+<button type="button" class="slideshow-btn slideshow-btn--prev" aria-label="Previous slide">‹</button>
+<button type="button" class="slideshow-btn slideshow-btn--next" aria-label="Next slide">›</button>
+</div>
+</div>
+</section>
+
+<div class="container market-hub">
+<div class="market-hub-intro">
+<h2>What would you like to do?</h2>
+<p>Jump into buying or selling—both areas stay in sync when you add new listings.</p>
+</div>
+<div class="market-actions">
+<a href="buy.html" class="market-action-card market-action-card--buy">
+<img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=800&q=80" alt="" class="market-action-bg" width="800" height="500" loading="lazy">
+<div class="market-action-overlay"></div>
+<div class="market-action-body">
+<span class="market-action-label">Shop</span>
+<h3>Buy</h3>
+<p>Browse laptops, gear, and items other sellers have posted—including yours.</p>
+<span class="market-action-cta">Browse products →</span>
+</div>
+</a>
+<a href="sell.html" class="market-action-card market-action-card--sell">
+<img src="https://images.unsplash.com/photo-1556761175-b4b41a552b04?w=800&q=80" alt="" class="market-action-bg" width="800" height="500" loading="lazy">
+<div class="market-action-overlay"></div>
+<div class="market-action-body">
+<span class="market-action-label">List</span>
+<h3>Sell</h3>
+<p>Add a product with name, price, and photo—it appears on the Buy page instantly.</p>
+<span class="market-action-cta">List an item →</span>
+</div>
+</a>
+</div>
+</div>
+
+<footer>© 2026 Market Bridge</footer>
+
+<script>
+(function () {
+  var root = document.getElementById("marketSlideshow");
+  if (!root) return;
+  var slides = root.querySelectorAll(".slide");
+  var dotsWrap = root.querySelector(".slideshow-dots");
+  var prev = root.querySelector(".slideshow-btn--prev");
+  var next = root.querySelector(".slideshow-btn--next");
+  var i = 0;
+  var timer;
+
+  function show(idx) {
+    i = (idx + slides.length) % slides.length;
+    slides.forEach(function (s, j) {
+      s.classList.toggle("is-active", j === i);
+    });
+    var dots = dotsWrap.querySelectorAll(".slideshow-dot");
+    dots.forEach(function (d, j) {
+      d.classList.toggle("is-active", j === i);
+      d.setAttribute("aria-selected", j === i ? "true" : "false");
+    });
+  }
+
+  slides.forEach(function (_, j) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "slideshow-dot" + (j === 0 ? " is-active" : "");
+    b.setAttribute("role", "tab");
+    b.setAttribute("aria-label", "Show slide " + (j + 1));
+    b.setAttribute("aria-selected", j === 0 ? "true" : "false");
+    b.addEventListener("click", function () {
+      show(j);
+      resetTimer();
+    });
+    dotsWrap.appendChild(b);
+  });
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(function () {
+      show(i + 1);
+    }, 5500);
+  }
+
+  prev.addEventListener("click", function () {
+    show(i - 1);
+    resetTimer();
+  });
+  next.addEventListener("click", function () {
+    show(i + 1);
+    resetTimer();
+  });
+
+  show(0);
+  resetTimer();
+})();
+</script>
+</body>
+</html>

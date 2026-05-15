@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback — Market Bridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="feedback-page">
+<header>
+<nav>
+<h2>Market Bridge</h2>
+<div>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="market.html">Market</a>
+<a href="feedback.html">Feedback</a>
+<a href="contact.html">Contact</a>
+</div>
+</nav>
+</header>
+
+<section class="feedback-banner" aria-labelledby="feedback-title">
+<div class="feedback-banner-bg" aria-hidden="true"></div>
+<div class="feedback-banner-overlay" aria-hidden="true"></div>
+<div class="feedback-banner-inner">
+<p class="feedback-eyebrow">We are listening</p>
+<h1 id="feedback-title">Share your feedback</h1>
+<p class="feedback-intro">Tell us what works, what does not, and what you would like to see next. Your message helps us improve Market Bridge for buyers and sellers.</p>
+</div>
+</section>
+
+<div class="feedback-layout">
+<aside class="feedback-aside" aria-label="Illustration">
+<img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80" alt="Person writing notes during a friendly conversation" width="800" height="1000" loading="lazy">
+<div class="feedback-aside-note">We read every submission and use it to prioritize updates.</div>
+</aside>
+
+<div class="feedback-main">
+<form class="feedback-form" id="feedback-form">
+<h2 class="feedback-form-title">Send a message</h2>
+<p class="feedback-form-lead">Fields marked with <span class="req">*</span> are required.</p>
+
+<label for="fb-name">Name <span class="req">*</span></label>
+<input id="fb-name" name="name" type="text" placeholder="Your name" required autocomplete="name">
+
+<label for="fb-email">Email <span class="req">*</span></label>
+<input id="fb-email" name="email" type="email" placeholder="you@example.com" required autocomplete="email">
+
+<label for="fb-topic">Topic</label>
+<select id="fb-topic" name="topic">
+<option value="">Choose a topic (optional)</option>
+<option value="buying">Buying experience</option>
+<option value="selling">Selling / listings</option>
+<option value="bugs">Bug or technical issue</option>
+<option value="feature">Feature idea</option>
+<option value="other">Something else</option>
+</select>
+
+<label for="fb-message">Your feedback <span class="req">*</span></label>
+<textarea id="fb-message" name="message" rows="6" placeholder="The more detail you share, the better we can help." required></textarea>
+
+<button type="submit" class="btn feedback-submit">Submit feedback</button>
+<p id="feedback-status" class="feedback-status" role="status" aria-live="polite"></p>
+</form>
+</div>
+</div>
+
+<footer>© 2026 Market Bridge</footer>
+
+<script>
+(function () {
+  var form = document.getElementById("feedback-form");
+  var statusEl = document.getElementById("feedback-status");
+  if (!form) return;
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    statusEl.textContent = "Thanks—we have received your feedback. (Demo: nothing is sent to a server yet.)";
+    statusEl.className = "feedback-status feedback-status--ok";
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>
