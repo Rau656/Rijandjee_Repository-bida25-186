@@ -6,16 +6,25 @@
 <title>About — Market Bridge</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="about-page">
-<header>
-<nav>
-<h2>Market Bridge</h2>
-<div>
+<header class="site-header">
+<nav class="nav" aria-label="Main navigation">
+<a href="index.html" class="brand brand--nav" aria-label="Market Bridge home">
+<span class="brand-icon" aria-hidden="true">
+<svg viewBox="0 0 40 40" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="2" y="2" width="36" height="36" rx="10" fill="url(#navGradA)"/>
+<path d="M12 24V16h4c2.5 0 4 1.4 4 4s-1.5 4-4 4h-4zm3-3.2c1.1 0 1.7-.6 1.7-1.6S16.1 18 15 18h-1.2v2.8H15zM22 24v-8h6v2.4h-3.2v1.4H27V24H22z" fill="#fff"/>
+<defs><linearGradient id="navGradA" x1="2" y1="2" x2="38" y2="38"><stop stop-color="#14b8a6"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs>
+</svg>
+</span>
+<span class="brand-text">Market Bridge</span>
+</a>
+<div class="nav-links">
 <a href="index.html">Home</a>
-<a href="about.html">About</a>
+<a href="about.html" class="nav-active">About</a>
 <a href="market.html">Market</a>
 <a href="feedback.html">Feedback</a>
 <a href="contact.html">Contact</a>
@@ -33,7 +42,7 @@
 </div>
 </section>
 
-<div class="container about-content">
+<div class="container about-content reveal">
 <div class="about-cards-grid">
 
 <article class="info-card info-card--mission">
@@ -102,6 +111,7 @@
 </section>
 </div>
 
-<footer>© 2026 Market Bridge</footer>
+<footer class="site-footer">© 2026 Market Bridge · Gaborone, Botswana</footer>
+<script src="js/site-animations.js"></script>
 </body>
 </html>

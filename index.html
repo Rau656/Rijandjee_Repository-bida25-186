@@ -6,19 +6,47 @@
 <title>Market Bridge - Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body class="home">
-<header>
-<nav>
-<h2 style= "color:teal;">Market Bridge</h2>
-<div>
-<a href="index.html" style= "color:teal;">Home</a>
+<body class="home intro-active">
+<div id="intro-splash" class="intro-splash" role="dialog" aria-labelledby="intro-title" aria-modal="true">
+<div class="intro-splash-inner">
+<div class="intro-logo" aria-hidden="true">
+<svg viewBox="0 0 64 64" width="72" height="72" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="4" y="4" width="56" height="56" rx="16" fill="url(#introGrad)"/>
+<path d="M20 38V26h6.5c4 0 6.5 2.2 6.5 6s-2.5 6-6.5 6H20zm6-4.8c1.8 0 2.8-.9 2.8-2.5S27.8 28 26 28h-2v5.2h2zM36 38V26h9.5v3.6H40v2.2h4.8v3.6H36z" fill="#fff"/>
+<defs><linearGradient id="introGrad" x1="4" y1="4" x2="60" y2="60"><stop stop-color="#14b8a6"/><stop offset="1" stop-color="#1e3a8a"/></linearGradient></defs>
+</svg>
+</div>
+<p class="intro-eyebrow">Welcome</p>
+<h2 id="intro-title" class="intro-title">Market Bridge</h2>
+<p class="intro-tagline">Connecting buyers &amp; sellers across Botswana</p>
+<div class="intro-loader" aria-hidden="true"><span></span><span></span><span></span></div>
+<button type="button" class="intro-skip">Skip</button>
+</div>
+</div>
+
+<header class="site-header">
+<nav class="nav nav--home" aria-label="Main navigation">
+<div class="nav-links nav-links--start">
 <a href="about.html">About</a>
 <a href="market.html">Market</a>
+</div>
+<a href="index.html" class="brand brand--nav" aria-label="Market Bridge home">
+<span class="brand-icon" aria-hidden="true">
+<svg viewBox="0 0 40 40" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="2" y="2" width="36" height="36" rx="10" fill="url(#navGrad)"/>
+<path d="M12 24V16h4c2.5 0 4 1.4 4 4s-1.5 4-4 4h-4zm3-3.2c1.1 0 1.7-.6 1.7-1.6S16.1 18 15 18h-1.2v2.8H15zM22 24v-8h6v2.4h-3.2v1.4H27V24H22z" fill="#fff"/>
+<defs><linearGradient id="navGrad" x1="2" y1="2" x2="38" y2="38"><stop stop-color="#14b8a6"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs>
+</svg>
+</span>
+<span class="brand-text">Market Bridge</span>
+</a>
+<div class="nav-links nav-links--end">
 <a href="feedback.html">Feedback</a>
 <a href="contact.html">Contact</a>
+<a href="index.html" class="nav-active">Home</a>
 </div>
 </nav>
 </header>
@@ -27,6 +55,16 @@
 <div class="hero-bg" role="presentation" aria-hidden="true"></div>
 <div class="hero-overlay" aria-hidden="true"></div>
 <div class="hero-inner">
+<a href="index.html" class="hero-logo brand brand--hero" aria-label="Market Bridge">
+<span class="brand-icon brand-icon--hero" aria-hidden="true">
+<svg viewBox="0 0 80 80" width="88" height="88" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="4" y="4" width="72" height="72" rx="20" fill="url(#heroGrad)"/>
+<path d="M24 48V32h8c5 0 8 2.8 8 8s-3 8-8 8h-8zm7.5-6c2.2 0 3.5-1.1 3.5-3.2S33.7 36 31.5 36H28v6h3.5zM44 48V32h12v4.5H48v2.8h7.2V48H44z" fill="#fff"/>
+<defs><linearGradient id="heroGrad" x1="4" y1="4" x2="76" y2="76"><stop stop-color="#5eead4"/><stop offset="1" stop-color="#1e3a8a"/></linearGradient></defs>
+</svg>
+</span>
+<span class="brand-text brand-text--hero">Market Bridge</span>
+</a>
 <p class="hero-eyebrow">Your trusted marketplace</p>
 <h1>Connecting Buyers &amp; Sellers Easily</h1>
 <p class="hero-lead">Discover quality products, fair prices, and a simple way to list what you sell—all in one place.</p>
@@ -34,24 +72,24 @@
 </div>
 </section>
 
-<section class="home-highlights" aria-labelledby="highlights-heading">
+<section class="home-highlights reveal" aria-labelledby="highlights-heading">
 <h2 id="highlights-heading" class="visually-hidden">Why shop with us</h2>
 <div class="highlights-grid">
-<article class="highlight-card">
+<article class="highlight-card reveal reveal-delay-1">
 <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=640&q=80" alt="Fast delivery concept with packages" width="640" height="400" loading="lazy">
 <div class="highlight-card-body">
 <h3>Fast listings</h3>
 <p>Get your items in front of buyers without a complicated setup.</p>
 </div>
 </article>
-<article class="highlight-card">
+<article class="highlight-card reveal reveal-delay-2">
 <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=640&q=80" alt="Person shopping online with card" width="640" height="400" loading="lazy">
 <div class="highlight-card-body">
 <h3>Secure checkout</h3>
 <p>Shop with clear pricing and a smooth path from browse to buy.</p>
 </div>
 </article>
-<article class="highlight-card">
+<article class="highlight-card reveal reveal-delay-3">
 <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=640&q=80" alt="Team collaboration in modern office" width="640" height="400" loading="lazy">
 <div class="highlight-card-body">
 <h3>Real support</h3>
@@ -61,7 +99,7 @@
 </div>
 </section>
 
-<div class="container featured-wrap">
+<div class="container featured-wrap reveal">
 <div class="section-head">
 <h2>Featured products</h2>
 <p class="section-sub">A taste of what you will find in the market—curated looks, real photos.</p>
@@ -107,6 +145,7 @@
 <p class="featured-cta"><a href="market.html" class="btn">View full market</a></p>
 </div>
 
-<footer>© 2026 Market Bridge</footer>
+<footer class="site-footer">© 2026 Market Bridge · Gaborone, Botswana</footer>
+<script src="js/site-animations.js"></script>
 </body>
 </html>
