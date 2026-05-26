@@ -10,7 +10,7 @@
       price: "12800",
       description: "Thin, fast, ready for work or school.",
       image:
-        "https://images.unsplash.com/photo-1496181139206-80ce49f8c1a4?w=800&q=80",
+        "https://i.pinimg.com/736x/c0/f8/6b/c0f86b1e98cd7411349892c9e71f2512.jpg",
     },
     {
       id: "default-2",
@@ -18,7 +18,7 @@
       price: "3200",
       description: "Comfortable over-ear sound with long battery life.",
       image:
-        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
+        "https://i.pinimg.com/1200x/11/98/23/119823ecfd800eb12771ad598cab4fc7.jpg",
     },
     {
       id: "default-3",
@@ -26,7 +26,7 @@
       price: "2150",
       description: "Minimal dial, everyday wear.",
       image:
-        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80",
+        "https://i.pinimg.com/736x/b4/09/31/b40931f3f4d8859564935c2eb9c31b92.jpg",
     },
     {
       id: "default-4",
@@ -34,7 +34,7 @@
       price: "2350",
       description: "Lightweight cushioning for daily miles.",
       image:
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80",
+        "https://i.pinimg.com/1200x/d3/44/bf/d344bf5b7be9b0b78d3b2ca3534be0fa.jpg",
     },
   ];
 
